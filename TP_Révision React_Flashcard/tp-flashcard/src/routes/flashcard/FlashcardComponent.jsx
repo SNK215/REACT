@@ -7,15 +7,13 @@ const FlashcardComponent = () => {
     const flashcards = useSelector(state =>state.flashcardSlice.flashcards)
     const {id} = useParams()
 
-    const found = flashcards.find(element => element.id == {id} )
-    console.log({id});
+    const foundFlashcard = flashcards.find(element => element.id == +id )
 
     return (
         <>
         <div className="d-flex justify-content-center">
             <div className="bg-dark text-light p-3 m-3 w-75 rounded">
-                <h3>Titre de la flashcard</h3>
-                <h1>VOUS ETES SUR LA FLASHCARD {id}</h1>
+                <h3>{foundFlashcard.question}</h3>
                 <hr />
                 <div className="accordion" id="accordionExample">
                     <div className="accordion-item">
@@ -26,7 +24,7 @@ const FlashcardComponent = () => {
                         </h2>
                         <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div className="accordion-body">
-                                SOLUTION TEXT
+                            {foundFlashcard.response}
                             </div>
                         </div>
                     </div>

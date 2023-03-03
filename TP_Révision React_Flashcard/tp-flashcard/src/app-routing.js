@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import NavbarComponent from "./routes/shared/NavbarComponent";
 import HomepageComponent from "./routes/homepage/HomepageComponent";
 import FlashcardComponent from "./routes/flashcard/FlashcardComponent";
+import FormComponent from "./routes/form/FormComponent";
 
 
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: "/flashcard/:id",
                 element : <FlashcardComponent/>
+            },
+            {
+                path: "/form",
+                element: <FormComponent/>
             }
         ]
     }

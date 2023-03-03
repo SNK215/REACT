@@ -7,7 +7,7 @@ const flashcardSlice = createSlice({
             {
                 id: 1,
                 question: "Comment appelle-t-on le cinquième degrés d'une gamme majeure ?",
-                response: "La dominante"
+                response: "On l'appellea dominante"
             },
             {
                 id: 2,
@@ -29,7 +29,7 @@ const flashcardSlice = createSlice({
         error: null
     },
     reducers: {
-        setFlashcard(state, action) {
+        setFlashcards(state, action) {
             state.flashcards = action.payload
         }
     }

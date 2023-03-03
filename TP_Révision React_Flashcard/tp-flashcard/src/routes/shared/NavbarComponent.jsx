@@ -1,7 +1,12 @@
 import { Outlet } from "react-router-dom"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { useEffect } from "react"
 
 const NavbarComponent = () => {
+
+    const flashcards = useSelector(state =>state.flashcardSlice.flashcards)
+    const randomNumber = Math.floor(Math.random() * flashcards.length) + 1
 
     return (
         <>
@@ -15,10 +20,10 @@ const NavbarComponent = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                    <a className="nav-link" aria-current="page" href="#"><i className="bi bi-plus-circle"></i> Ajouter une flashcard</a>
+                    <Link to="/form" className="nav-link"><i className="bi bi-plus-circle"></i> Ajouter une flashcard</Link>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link" href="#"><i className="bi bi-shuffle"></i> Flashcard au hasard</a>
+                    <Link className="nav-link" to={"/flashcard/"+randomNumber}><i className="bi bi-shuffle"></i> Flashcard au hasard</Link>
                     </li>
                 </ul>
                 <form className="d-flex" role="search">

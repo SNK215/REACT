@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+
 const HomepageComponent = () => {
+
+    const flashcards = useSelector(state =>state.flashcardSlice.flashcards)
 
     return (
         <>
@@ -13,7 +18,9 @@ const HomepageComponent = () => {
                 <hr />
                 <h3>Liste des flashcards :</h3>
                 <hr />
-                
+                <div className="d-flex flex-column">
+                    {flashcards.map((element,key)=><Link className="my-1 display-5" key={key} to={"/flashcard/"+element.id}>Flashcard n° {element.id}</Link>)}
+                </div>
             </div>
         </div>
         </>
