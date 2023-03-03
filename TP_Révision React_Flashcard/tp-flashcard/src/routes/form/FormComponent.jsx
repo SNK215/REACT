@@ -34,7 +34,6 @@ const FormComponent = () => {
                     <label htmlFor="question" className="form-label">Question :</label>
                     <input type="text" className="form-control" ref={questionRef} required/>
                     <label htmlFor="response" className="form-label">Réponse :</label>
-                    {/* <input type="text" className="form-control" ref={responseRef} required/> */}
                     <textarea className="form-control" cols="30" rows="5" ref={responseRef} style={{resize:"none"}}></textarea>
                     <button className="btn btn-primary mt-3">Valider</button>
                 </form>

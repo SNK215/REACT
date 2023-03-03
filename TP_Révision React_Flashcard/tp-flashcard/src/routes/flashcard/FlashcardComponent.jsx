@@ -13,7 +13,7 @@ const FlashcardComponent = () => {
         <>
         <div className="d-flex justify-content-center">
             <div className="bg-dark text-light p-3 m-3 w-75 rounded">
-                <h3>{foundFlashcard.question}</h3>
+                <h3>{foundFlashcard.id}) {foundFlashcard.question}</h3>
                 <hr />
                 <div className="accordion" id="accordionExample">
                     <div className="accordion-item">

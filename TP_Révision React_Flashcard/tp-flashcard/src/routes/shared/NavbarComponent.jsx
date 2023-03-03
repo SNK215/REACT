@@ -1,12 +1,23 @@
 import { Outlet } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useRef } from "react"
+import { useNavigate } from "react-router-dom"
 
 const NavbarComponent = () => {
 
     const flashcards = useSelector(state =>state.flashcardSlice.flashcards)
     const randomNumber = Math.floor(Math.random() * flashcards.length) + 1
+    const searchRef = useRef()
+    const navigate = useNavigate()
+
+    const handleForm = (event) => {
+        event.preventDefault()
+
+        const searchInput = searchRef.current.value
+
+        navigate("/flashcard/"+searchInput)
+    }
 
     return (
         <>
@@ -26,9 +37,9 @@ const NavbarComponent = () => {
                     <Link className="nav-link" to={"/flashcard/"+randomNumber}><i className="bi bi-shuffle"></i> Flashcard au hasard</Link>
                     </li>
                 </ul>
-                <form className="d-flex" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-success" type="submit">Search</button>
+                <form className="d-flex" role="search" onSubmit={handleForm}>
+                    <input className="form-control me-2" type="search" placeholder="Entrez un ID de flashcard" aria-label="Search" ref={searchRef}/>
+                    <button className="btn btn-outline-primary" type="submit">Rechercher</button>
                 </form>
                 </div>
             </div>
