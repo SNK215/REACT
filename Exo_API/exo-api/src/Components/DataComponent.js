@@ -5,13 +5,14 @@ export class DataComponent extends Component {
     constructor(props){
         super(props)
         this.state = {
-            data : []
+            clients : []
         }
     }
 
     componentDidMount(){
-        getInfoPokeApi().then(res => {
-            this.setState({ data : res.data})
+        getData().then(data => {
+            this.setState({ clients : data })
+            console.log("dataDidMount", this.state.clients);
         })
     }
 
@@ -19,29 +20,10 @@ export class DataComponent extends Component {
         return(
             <div>
                 {
-                    this.state.data.length == 0 ? <div>En cours de chargement ....</div>
+                    this.state.clients == 0 ? <div>En cours de chargement ....</div>
                     :
                     (<div>
-                        <div className="card text-bg-secondary mb-3" style={{maxWidth: "18rem"}}>
-                        <div className="card-header">Type : {this.state.data.types[0].type.name}</div>
-                        <div className="card-body">
-                            <h5 className="card-title">{this.state.data.name}</h5>
-                            <img src={this.state.data.sprites.other.home.front_default} className="img-fluid rounded-start" alt="..."/>
-                            <p className="card-text">
-                                <ul>
-                                    <span>Weight: {this.state.data.weight}</span>
-                                    <span>Height: {this.state.data.height} </span>
-                                </ul>
-                                <hr/>
-                                <ul>
-                                    <li>{this.state.data.moves[0].move.name}</li>
-                                    <li>{this.state.data.moves[1].move.name} </li>
-                                    <li>{this.state.data.moves[2].move.name} </li>
-                                    <li>{this.state.data.moves[3].move.name} </li>
-                                </ul>
-                            </p>
-                        </div>
-                        </div>
+                        {this.state.clients.map((client,i) => (<div key={i}>{client.firstname}</div>))}
                     </div>)
                 }
             </div>
